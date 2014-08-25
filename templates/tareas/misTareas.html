@@ -2,12 +2,30 @@
 
 {% block content %}
     {% if Tareas %}
-        {% for Tarea in Tareas %}
-        <tr>
-            <td><a href='{% url 'DetalleTarea' Tarea.pk %}'>{{ tarea.Titulo }}</a></td>
-        </tr>
-        {% endfor %}
+        <div style="padding-top: 60px;">
+            <table class="table" style=" padding: 40px">
+                <tr style="background-color: gray">
+                    <th>Titulo</th>
+                    <th>Descripcion</th>
+                    <th>Creada</th>
+                    <th>Prioridad</th>
+                    <th>Creada </th>
+                    <th>status </th>
+                </tr>
+                {% for Tarea in Tareas%}
+                <tr class="{{ Tarea.color_prioridad }}">
+                    <td><a href='{% url 'DetalleTarea' Tarea.pk %}'>{{ Tarea.titulo }}</a></td>
+                    <td>{{ Tarea.descripcion }}</td>
+                    <td>{{ Tarea.creada.username.first_name }} {{ Tarea.creada.username.last_name }}</td>
+                    <td>{{ Tarea.prioridad }}</td>
+                    <td>{{ Tarea.fecha_creacion }}</td>
+                    <td>{{ Tarea.status }}</td>
+
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     {% else %}
-        No tienes Tareas pendientes
+        NO tienes tareas pendientes
     {% endif %}
 {% endblock %}

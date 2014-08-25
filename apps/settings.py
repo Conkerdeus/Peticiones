@@ -111,3 +111,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
 )
 
+# Email configuration
+EMAIL_HOST = 'redmagisterial.com'
+EMAIL_HOST_USER = 'comunidad@redmagisterial.com'
+EMAIL_HOST_PASSWORD = 'Cmnd3dil4r'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'RedMagisterial <comunidad@redmagisterial.com>'

@@ -18,8 +18,7 @@ class CrearTareaForm(forms.Form):
     Programador = forms.ModelChoiceField(
         label='Programador Asignado',
         queryset = Usuario.objects.filter(
-            es_programador=True
-        )
+            es_programador=True)
     )
 
     Prioridad = forms.CharField(

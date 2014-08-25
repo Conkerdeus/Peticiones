@@ -5,18 +5,18 @@ from apps.comentarios.models import Comentario
 
 class Tarea(models.Model):
     prioridad_choices = {
-            ('1', 'Para ayer'),
-            ('2', 'Alta',),
-            ('3', 'Normal'),
-            ('4', 'Baja')
+            ('Para ayer', 'Para ayer'),
+            ('Alta', 'Alta',),
+            ('Normal', 'Normal'),
+            ('Baja', 'Baja')
         }
 
     status_choices = {
-            ('L', 'Levantada'),
-            ('P', 'Planeacion'),
-            ('D', 'Desarrollo'),
-            ('V', 'Verificacion'),
-            ('T', 'Terminada')
+            ('Aceptada', 'Aceptada'),
+            ('En planeacion', 'Planeacion'),
+            ('Desarrollando', 'Desarrollo'),
+            ('En verificacion de errores', 'Verificacion'),
+            ('Terminada', 'Terminada')
         }
 
     titulo = models.CharField(
@@ -40,14 +40,25 @@ class Tarea(models.Model):
     )
 
     status = models.CharField(
-        max_length = 3,
+        max_length = 15,
         choices = status_choices
     )
 
     prioridad = models.CharField(
-        max_length = 3,
+        max_length = 15,
         choices = prioridad_choices
     )
+
+    color_prioridad = models.CharField(
+        max_length = 15,
+        null = True
+    )
+
+    orden_prioridad = models.CharField(
+        null = True,
+        max_length=1
+    )
+
 
     comentarios = models.ManyToManyField(
         Comentario
@@ -55,5 +66,8 @@ class Tarea(models.Model):
 
     def __unicode__(self):
         return self.titulo
+
+    class Meta:
+        ordering = ["orden_prioridad"]
 
 

@@ -2,11 +2,29 @@
 
 {% block content %}
     {% if Tareas %}
-        {% for Tarea in Tareas %}
-        <tr>
-            <td><a href='{% url 'DetalleTarea' Tarea.pk %}'>{{ Tarea.titulo }}</a></td>
-        </tr>
-        {% endfor %}
+        <div style="padding-top: 60px;">
+            <table class="table" style=" padding: 40px">
+                <tr style="background-color: gray">
+                    <th>Titulo</th>
+                    <th>Descripcion</th>
+                    <th>Programador asignado</th>
+                    <th>Prioridad</th>
+                    <th>Creada </th>
+                    <th>status </th>
+                </tr>
+                {% for Tarea in Tareas%}
+                <tr class="{{ Tarea.color_prioridad }}">
+                    <td><a href='{% url 'DetalleTarea' Tarea.pk %}'>{{ Tarea.titulo }}</a></td>
+                    <td>{{ Tarea.descripcion }}</td>
+                    <td>{{ Tarea.asignada.username.first_name }} {{ Tarea.asignada.username.last_name }}</td>
+                    <td>{{ Tarea.prioridad }}</td>
+                    <td>{{ Tarea.fecha_creacion }}</td>
+                    <td>{{ Tarea.status }}</td>
+
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     {% else %}
         No has levantado tareas
     {% endif %}

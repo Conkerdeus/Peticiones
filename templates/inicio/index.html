@@ -1,5 +1,17 @@
 {% extends 'inicio/base.html' %}
 
+
 {% block content %}
-ejemplo
+    Hola {{ user.first_name }}!!<br>
+    {% if Tareas %}
+        Tienes {{ Tareas.count }} tareas pendientes: <br>
+        <ul>
+            {% for Tarea in Tareas %}
+                <li>{{ Tarea.titulo }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        NO tienes tareas pendientes
+    {% endif %}
+
 {% endblock %}
