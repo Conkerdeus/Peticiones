@@ -1,0 +1,13 @@
+{% extends 'inicio/base.html' %}
+
+{% block content %}
+    {% if Tareas %}
+        {% for Tarea in Tareas %}
+        <tr>
+            <td><a href='{% url 'DetalleTarea' Tarea.pk %}'>{{ Tarea.titulo }}</a></td>
+        </tr>
+        {% endfor %}
+    {% else %}
+        No has levantado tareas
+    {% endif %}
+{% endblock %}

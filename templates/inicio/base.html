@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <title>Sistema de peticion de tareas - {% block title %}{% endblock %} </title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <nav>
+            {% include 'inicio/navegacion.html' %}
+        </nav>
+        <section>
+            {% block content %}{% endblock %}
+        </section>
+    {% endif %}
+</body>
+</html>

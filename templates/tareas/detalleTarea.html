@@ -1,0 +1,9 @@
+{% extends 'inicio/base.html' %}
+
+{% block content %}
+    {{ Tarea.titulo }}
+    {{ Tarea.descripcion }}
+    <a href="{% url 'ModificarTarea' Tarea.pk %}">Modificar Tarea</a>
+    <a href="{% url 'BorrarTarea' Tarea.pk %}">Borrar Tarea</a>
+    <a href="{% url 'ListarTareas' %}">Regresar</a>
+{% endblock %}
